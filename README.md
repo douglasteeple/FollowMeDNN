@@ -1,56 +1,29 @@
-[![Udacity - Robotics NanoDegree Program](https://s3-us-west-1.amazonaws.com/udacity-robotics/Extra+Images/RoboND_flag.png)](https://www.udacity.com/robotics)
 
 ## Deep Learning Project ##
 
-In this project, you will train a deep neural network to identify and track a target in simulation. So-called “follow me” applications like this are key to many fields of robotics and the very same techniques you apply here could be extended to scenarios like advanced cruise control in autonomous vehicles or human-robot collaboration in industry.
+This project involved training a deep neural network to identify and track a target in simulation. This target is called the "hero" throughout this documentation.
 
 [image_0]: ./docs/misc/sim_screenshot.png
 ![alt text][image_0] 
 
-## Setup Instructions
-**Clone the repository**
-```
-$ git clone https://github.com/udacity/RoboND-DeepLearning.git
-```
+**The Data**
 
-**Download the data**
+The following three files are saved in the data folder of the project. 
 
-Save the following three files into the data folder of the cloned repository. 
+train
+validation
+sample_evaluation_data
 
-[Training Data](https://s3-us-west-1.amazonaws.com/udacity-robotics/Deep+Learning+Data/Lab/train.zip) 
+**The QuadSim binary**
 
-[Validation Data](https://s3-us-west-1.amazonaws.com/udacity-robotics/Deep+Learning+Data/Lab/validation.zip)
+The QuadSim suimulator has been custom tailored for this project. 
 
-[Sample Evaluation Data](https://s3-us-west-1.amazonaws.com/udacity-robotics/Deep+Learning+Data/Project/sample_evaluation_data.zip)
-
-**Download the QuadSim binary**
-
-To interface your neural net with the QuadSim simulator, you must use a version QuadSim that has been custom tailored for this project. The previous version that you might have used for the Controls lab will not work.
-
-The simulator binary can be downloaded [here](https://github.com/udacity/RoboND-DeepLearning/releases/latest)
-
-**Install Dependencies**
-
-You'll need Python 3 and Jupyter Notebooks installed to do this project.  The best way to get setup with these if you are not already is to use Anaconda following along with the [RoboND-Python-Starterkit](https://github.com/udacity/RoboND-Python-StarterKit).
-
-If for some reason you choose not to use Anaconda, you must install the following frameworks and packages on your system:
-* Python 3.x
-* Tensorflow 1.2.1
-* NumPy 1.11
-* SciPy 0.17.0
-* eventlet 
-* Flask
-* h5py
-* PIL
-* python-socketio
-* scikit-image
-* transforms3d
-* PyQt4/Pyqt5
+The simulator binary is available [here](https://github.com/udacity/RoboND-DeepLearning/releases/latest)
 
 ## Implement the Segmentation Network
 1. Download the training dataset from above and extract to the project `data` directory.
 2. Implement your solution in model_training.ipynb
-3. Train the network locally, or on [AWS](https://classroom.udacity.com/nanodegrees/nd209/parts/09664d24-bdec-4e64-897a-d0f55e177f09/modules/cac27683-d5f4-40b4-82ce-d708de8f5373/lessons/197a058e-44f6-47df-8229-0ce633e0a2d0/concepts/27c73209-5d7b-4284-8315-c0e07a7cd87f?contentVersion=1.0.0&contentLocale=en-us).
+3. Train the network locally.
 4. Continue to experiment with the training data and network until you attain the score you desire.
 5. Once you are comfortable with performance on the training dataset, see how it performs in live simulation!
 
@@ -109,8 +82,6 @@ Merging multiple `train` or `validation` may be difficult, it is recommended tha
 
 ## Training, Predicting and Scoring ##
 With your training and validation data having been generated or downloaded from the above section of this repository, you are free to begin working with the neural net.
-
-**Note**: Training CNNs is a very compute-intensive process. If your system does not have a recent Nvidia graphics card, with [cuDNN](https://developer.nvidia.com/cudnn) and [CUDA](https://developer.nvidia.com/cuda) installed , you may need to perform the training step in the cloud. Instructions for using AWS to train your network in the cloud may be found [here](https://classroom.udacity.com/nanodegrees/nd209/parts/09664d24-bdec-4e64-897a-d0f55e177f09/modules/cac27683-d5f4-40b4-82ce-d708de8f5373/lessons/197a058e-44f6-47df-8229-0ce633e0a2d0/concepts/27c73209-5d7b-4284-8315-c0e07a7cd87f?contentVersion=1.0.0&contentLocale=en-us)
 
 ### Training your Model ###
 **Prerequisites**
