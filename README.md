@@ -126,7 +126,6 @@ Share your scores in slack, and keep a tally in a pinned message. Scores should 
 2. Launch the simulator, select "Spawn People", and then click the "Follow Me" button.
 3. Run the realtime follower script
 ```
-$ python follower.py my_amazing_model.h5
+cd ~/RoboND-DeepLearning-Project/code
+(RoboND) DougMac:code douglasteeple$ python follower.py --pred_viz model_weights
 ```
-
-**Note:** If you'd like to see an overlay of the detected region on each camera frame from the drone, simply pass the `--pred_viz` parameter to `follower.py`
