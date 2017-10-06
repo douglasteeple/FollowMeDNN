@@ -23,14 +23,14 @@ The student explains their neural network parameters including the values select
 ### Hyper Parameters
 The following hypr parameters we used:
 
-'''
+```
 learning_rate = 0.005
 batch_size = 64
 num_epochs = 20
 steps_per_epoch = 400
 validation_steps = 50
 workers = 2
-'''
+```
 
 I found that at least 20 epochs were required to acheive the accuracy required. I ran the model on an AWS instance for speed. A large number of steps per epoch was key to getting a better score. The learning rate is quite low. Higher learning rates caused the model to diverge as the epochs proceeded.
 
