@@ -4,7 +4,8 @@
 This project involved training a deep neural network to identify and track a target in simulation. This target is called the "hero" throughout this documentation.
 
 [image_0]: ./docs/misc/follow.png
-![alt text][image_0] 
+![alt text][Following Image] 
+### Following the Hero - Figure 1
 
 The write-up / README should include a statement and supporting figures / images that explain how each rubric item was addressed, and specifically where in the code each step was handled. The write-up should include a discussion of what worked, what didn't and how the project implementation could be improved going forward.
 
@@ -21,7 +22,7 @@ The write-up conveys the student's understanding of the parameters chosen for th
 The student explains their neural network parameters including the values selected and how these values were obtained (i.e. how was hyper tuning performed? Brute force, etc.) Hyper parameters include, but are not limited to:
 
 ### Hyper Parameters
-The following hypr parameters we used:
+The following hyper parameters were used:
 
 ```
 learning_rate = 0.005
