@@ -1,9 +1,9 @@
 
 ## Deep Learning Project ##
 
-This project implements a fully convolutional deep neural network supporting the semantic segmentation model. The DNN learns and later identifies and tracks a target in simulation. This target is called the "hero" throughout this documentation. In this project we:
+This project implements a fully convolutional deep neural network supporting the semantic segmentation model. Semantic segmentation is superior to bounding boxes as it accurately segments to the actual shape of the object. The DNN learns and later identifies and tracks a target in simulation. This target is called the "hero" throughout this documentation. In this project we:
 
-* implement the FCN deep neual network
+* implement the Fully Convolutional Network (FCN) deep neural network
 * gather simulation data, training and validation, with and without hero, using the Unity simulator
 * train the model on an Amazon AWS instance
 * check the score for accuracy
@@ -12,7 +12,12 @@ This project implements a fully convolutional deep neural network supporting the
 [image_0]: ./docs/misc/follow.png
 ![Following Image][image_0] 
 
-### Following the Hero - Figure 1
+###                                  Following the Hero - Figure 1
+
+
+## Step 1 Separable Convolutions
+
+The Encoder for the FCN requires separable convolution layers, due to their advantages as explained in the classroom. The 1x1 convolution layer in the FCN, however, is a regular convolution. Each includes batch normalization with the ReLU activation function applied to the layers. Two function were provided, *separable_conv2d_batchnorm*, profiding a normalized separable 2 dimensional convolution and *conv2d_batchnorm* providing a simple normalized 2 dimensional convolution.
 
 The write-up / README should include a statement and supporting figures / images that explain how each rubric item was addressed, and specifically where in the code each step was handled. The write-up should include a discussion of what worked, what didn't and how the project implementation could be improved going forward.
 
