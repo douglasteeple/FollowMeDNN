@@ -9,7 +9,7 @@ This project implements a fully convolutional deep neural network supporting the
 * Checked the score for accuracy.
 * Ran the model in the simulator to follow the hero.
 
-<p align="center'>
+<p align="center">
 <table>
     <tr>
         <th>Follow Me Project - Figure 1</th>
@@ -128,7 +128,7 @@ The predictions are compared to the mask images, which are the ground truth labe
 * patrol_with_targ: Test how well the network can detect the hero from a distance.
 * patrol_non_targ: Test how often the network makes a mistake and identifies the wrong person as the target.
 
-<p align="center'>
+<p align="center">
 <table>
     <tr>
         <th>Prediction patrol with target</th><th>Prediction patrol without target</th>
