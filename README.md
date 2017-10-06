@@ -1,7 +1,13 @@
 
 ## Deep Learning Project ##
 
-This project involved training a fullt convolutional deep neural network to learn and later identify and track a target in simulation. This target is called the "hero" throughout this documentation.
+This project implements a fully convolutional deep neural network supporting the semantic segmentation model. The DNN learns and later identifies and tracks a target in simulation. This target is called the "hero" throughout this documentation. In this project we:
+
+* implement the FCN deep neual network
+* gather simulation data, training and validation, with and without hero, using the Unity simulator
+* train the model on an Amazon AWS instance
+* check the score for accuracy
+* run the model in the simulator to follow the hero
 
 [image_0]: ./docs/misc/follow.png
 ![Following Image][image_0] 
