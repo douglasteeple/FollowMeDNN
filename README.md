@@ -132,26 +132,23 @@ The predictions are compared to the mask images, which are the ground truth labe
 <center>
 <table>
     <tr>
-        <th>Prediction patrol with target</th>
+        <th>Prediction patrol with target</th><th>Prediction patrol non target</th>
     </tr>
     <tr>
         <td>
             <img height="240" src="./docs/misc/pred1.png"/>
         </td>
-    </tr>
-    <tr>
-        <th>Prediction patrol non target</th>
-    </tr>
-    <tr>
         <td>
             <img height="240" src="./docs/misc/pred2.png"/>
         </td>
     </tr>
     <tr>
-        <th>Prediction following images</th>
     </tr>
     <tr>
-        <td>
+        <th cols=2>Prediction following images</th>
+    </tr>
+    <tr>
+        <td cols=2>
             <img height="240" src="./docs/misc/pred3.png"/>
         </td>
     </tr>
