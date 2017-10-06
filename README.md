@@ -22,6 +22,25 @@ This project implements a fully convolutional deep neural network supporting the
 </table>
 </p>
 
+## The Model
+
+The FCN model consists of inputs that are passed through batch normed convolution layers to the final batch normed layer which is 1x1 batch convolved. Then there are as many decoders as encorders that bilinear upsample each of the convolved layers to recreate the original image dimensions. Each decoder may have multiple separable convolution steps to extract more data. This diagram shows the overall process:
+
+<p align="center">
+<table>
+    <tr>
+        <th>FCN Model - Figure 2</th>
+    </tr>
+    <tr>
+        <td>
+            <img height="240" src="./docs/misc/fcn.png"/>
+        </td>
+    </tr>
+</table>
+</p>
+
+The steps are detailed below:
+
 ## Step 1 - Separable Convolutions and Batch Normalization
 
 The Encoder for the FCN requires separable convolution layers, due to their advantages as explained in the classroom. The 1x1 convolution layer in the FCN, is a regular convolution. Each function includes batch normalization with the ReLU activation function applied to the layers. Two function were provided, `separable_conv2d_batchnorm`, profiding a normalized separable 2 dimensional convolution and `conv2d_batchnorm` providing a simple normalized 2 dimensional convolution.
