@@ -107,7 +107,7 @@ The FCN was then trained on sample data with given hyperparameters to compile an
 <p align="center">
 <table>
     <tr>
-        <th>Epoch 2</th><th>Epoch 20</th>
+        <th>Training Epoch 2</th><th>Training Epoch 20</th>
     </tr>
     <tr>
         <td>
@@ -123,11 +123,41 @@ The FCN was then trained on sample data with given hyperparameters to compile an
 
 ## Prediction 
 
-Now that you have your model trained and saved, you can make predictions on your validation dataset. These predictions can be compared to the mask images, which are the ground truth labels, to evaluate how well your model is doing under different conditions.
-There are three different predictions available from the helper code provided:
-patrol_with_targ: Test how well the network can detect the hero from a distance.
-patrol_non_targ: Test how often the network makes a mistake and identifies the wrong person as the target.
-following_images: Test how well the network can identify the target while following them.
+The predictions are compared to the mask images, which are the ground truth labels, to evaluate how well your model is doing under different conditions. There are three different predictions:
+
+* patrol_with_targ: Test how well the network can detect the hero from a distance.
+* patrol_non_targ: Test how often the network makes a mistake and identifies the wrong person as the target.
+* following_images: Test how well the network can identify the target while following them.
+
+<center>
+<table>
+    <tr>
+        <th>Prediction patrol with target</th>
+    </tr>
+    <tr>
+        <td>
+            <img height="240" src="./docs/misc/pred1.png"/>
+        </td>
+    </tr>
+    <tr>
+        <th>Prediction patrol non target</th>
+    </tr>
+    <tr>
+        <td>
+            <img height="240" src="./docs/misc/pred2.png"/>
+        </td>
+    </tr>
+    <tr>
+        <th>Prediction following images</th>
+    </tr>
+    <tr>
+        <td>
+            <img height="240" src="./docs/misc/pred3.png"/>
+        </td>
+    </tr>
+</table>
+</center>
+
 
 
 The write-up / README should include a statement and supporting figures / images that explain how each rubric item was addressed, and specifically where in the code each step was handled. The write-up should include a discussion of what worked, what didn't and how the project implementation could be improved going forward.
