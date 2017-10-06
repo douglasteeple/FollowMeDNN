@@ -102,7 +102,32 @@ def fcn_model(inputs, num_classes):
  
 ## Training 
 
-The FCN was then trained on sample data with given hyperparameters to compile and train the model. Two of the 20 training curves are shown for brevity:
+The FCN was then trained on sample data with given hyperparameters to compile and train the model. 
+
+### Hyperparameters
+
+The hyperparameters are:
+
+* `batch_size`: number of training samples/images that get propagated through the network in a single pass.
+* `num_epochs`: number of times the entire training dataset gets propagated through the network.
+* `steps_per_epoch`: number of batches of training images that go through the network in 1 epoch.
+* `validation_steps`: number of batches of validation images that go through the network in 1 epoch.
+* `workers`: maximum number of processes.
+
+The following hyperparameters were used:
+
+```
+learning_rate = 0.005
+batch_size = 64
+num_epochs = 20
+steps_per_epoch = 400
+validation_steps = 50
+workers = 2
+```
+
+I found that at least 20 epochs were required to acheive the accuracy required. I ran the model on an AWS instance for speed. A large number of steps per epoch was key to getting a better score. The learning rate is quite low, made possible by the nomralization steps. Higher learning rates caused the model to diverge as the epochs proceeded.
+
+Two of the 20 training curves are shown for brevity:
 
 <p align="center">
 <table>
@@ -135,10 +160,10 @@ The predictions are compared to the mask images, which are the ground truth labe
     </tr>
     <tr>
         <td>
-            <img height="240" src="./docs/misc/pred1.png"/>
+            <img height="480" src="./docs/misc/pred1.png"/>
         </td>
         <td>
-            <img height="240" src="./docs/misc/pred2.png"/>
+            <img height="480" src="./docs/misc/pred2.png"/>
         </td>
     </tr>
 </table>
@@ -160,28 +185,6 @@ The write-up conveys the student's understanding of the parameters chosen for th
 
 The student explains their neural network parameters including the values selected and how these values were obtained (i.e. how was hyper tuning performed? Brute force, etc.) Hyper parameters include, but are not limited to:
 
-### Hyperparameters
-
-The hyperparameters are:
-
-* `batch_size`: number of training samples/images that get propagated through the network in a single pass.
-* `num_epochs`: number of times the entire training dataset gets propagated through the network.
-* `steps_per_epoch`: number of batches of training images that go through the network in 1 epoch.
-* `validation_steps`: number of batches of validation images that go through the network in 1 epoch.
-* `workers`: maximum number of processes.
-
-The following hyperparameters were used:
-
-```
-learning_rate = 0.005
-batch_size = 64
-num_epochs = 20
-steps_per_epoch = 400
-validation_steps = 50
-workers = 2
-```
-
-I found that at least 20 epochs were required to acheive the accuracy required. I ran the model on an AWS instance for speed. A large number of steps per epoch was key to getting a better score. The learning rate is quite low, made possible by the nomralization steps. Higher learning rates caused the model to diverge as the epochs proceeded.
 
 All configurable parameters should be explicitly stated and justified.
 
