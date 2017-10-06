@@ -9,13 +9,17 @@ This project implements a fully convolutional deep neural network supporting the
 * check the score for accuracy
 * run the model in the simulator to follow the hero
 
-[image_0]: ./docs/misc/follow.png
-![Following Image][image_0] 
-
 <center>
-
-### Following the Hero - Figure 1
-
+<table>
+    <tr>
+        <th>Following the Hero</th>
+    </tr>
+    <tr>
+        <td>
+            <img height="240" src="./docs/misc/follow.png"/>
+        </td>
+    </tr>
+</table>
 </center>
 
 ## Step 1 Separable Convolutions
@@ -68,6 +72,21 @@ The student is able to clearly articulate whether this model and data would work
 
 ## Running the Model in the Simulator
 
+[image3]: http://douglasteeple.com/DNN/ScreenRecording2.mp4
+
+### Mapping Movie Output
+<center>
+<table>
+    <tr>
+        <th>Following</th>
+    </tr>
+    <tr>
+        <td>
+            <a href="http://douglasteeple.com/DNN/ScreenRecording2.mp4" target=_blank><img height="240" src="http://douglasteeple.com/DNN/ScreenRecording2.png"/></a>
+        </td>
+    </tr>
+</table>
+</center>
 
 ## Model
 
