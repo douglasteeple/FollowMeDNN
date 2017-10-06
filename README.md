@@ -9,7 +9,7 @@ This project implements a fully convolutional deep neural network supporting the
 * Checked the score for accuracy.
 * Ran the model in the simulator to follow the hero.
 
-<center>
+<p align="center'>
 <table>
     <tr>
         <th>Follow Me Project - Figure 1</th>
@@ -20,7 +20,7 @@ This project implements a fully convolutional deep neural network supporting the
         </td>
     </tr>
 </table>
-</center>
+</p>
 
 ## Step 1 - Separable Convolutions and Batch Normalization
 
@@ -123,16 +123,15 @@ The FCN was then trained on sample data with given hyperparameters to compile an
 
 ## Prediction 
 
-The predictions are compared to the mask images, which are the ground truth labels, to evaluate how well your model is doing under different conditions. There are three different predictions:
+The predictions are compared to the mask images, which are the ground truth labels, to evaluate how well the model is doing under different conditions.
 
 * patrol_with_targ: Test how well the network can detect the hero from a distance.
 * patrol_non_targ: Test how often the network makes a mistake and identifies the wrong person as the target.
-* following_images: Test how well the network can identify the target while following them.
 
-<center>
+<p align="center'>
 <table>
     <tr>
-        <th>Prediction patrol with target</th><th>Prediction patrol non target</th>
+        <th>Prediction patrol with target</th><th>Prediction patrol without target</th>
     </tr>
     <tr>
         <td>
@@ -142,18 +141,8 @@ The predictions are compared to the mask images, which are the ground truth labe
             <img height="240" src="./docs/misc/pred2.png"/>
         </td>
     </tr>
-    <tr>
-    </tr>
-    <tr>
-        <th cols=2>Prediction following images</th>
-    </tr>
-    <tr>
-        <td cols=2>
-            <img height="240" src="./docs/misc/pred3.png"/>
-        </td>
-    </tr>
 </table>
-</center>
+</p>
 
 
 
