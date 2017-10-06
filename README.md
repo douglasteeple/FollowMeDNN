@@ -57,7 +57,7 @@ The student is able to clearly articulate whether this model and data would work
 The model is submitted in hdf5 format (.h5) in the git repository.
 
 The neural network obtained an accuracy greater than or equal to 40% (0.40) using the Intersection over Union (IoU) metric. 
-The final_IoU = (iou1 + iou3)/2 = 0.553580020823. 
-The final_score = final_IoU * weight = 0.407318352164
-The requierd final score was met.
+The final IoU was 0.553580020823. 
+The final score was 0.407318352164
+The required final score was met.
 
