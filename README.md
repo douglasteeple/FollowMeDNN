@@ -4,7 +4,8 @@
 This project involved training a deep neural network to identify and track a target in simulation. This target is called the "hero" throughout this documentation.
 
 [image_0]: ./docs/misc/follow.png
-![alt text][Following Image] 
+![alt text][FollowingImage] 
+
 ### Following the Hero - Figure 1
 
 The write-up / README should include a statement and supporting figures / images that explain how each rubric item was addressed, and specifically where in the code each step was handled. The write-up should include a discussion of what worked, what didn't and how the project implementation could be improved going forward.
