@@ -12,7 +12,7 @@ This project implements a fully convolutional deep neural network supporting the
 <center>
 <table>
     <tr>
-        <th>Following the Hero</th>
+        <th>Follow Me</th>
     </tr>
     <tr>
         <td>
@@ -72,13 +72,10 @@ The student is able to clearly articulate whether this model and data would work
 
 ## Running the Model in the Simulator
 
-[image3]: http://douglasteeple.com/DNN/ScreenRecording2.mp4
-
-### Mapping Movie Output
 <center>
 <table>
     <tr>
-        <th>Following</th>
+        <th>Following The Hero (Click to view)</th>
     </tr>
     <tr>
         <td>
