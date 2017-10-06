@@ -86,7 +86,7 @@ There are three steps in building the model:
 
 ```
 def fcn_model(inputs, num_classes):
-    # add some number of encode blocks
+    # add some number of Encoder blocks
     layer1 = encoder_block(inputs, 32, strides=2)
     layer2 = encoder_block(layer1, 64, strides=2)
     layer3 = encoder_block(layer2, 64, strides=2)    
@@ -100,9 +100,9 @@ def fcn_model(inputs, num_classes):
     return layers.Conv2D(num_classes, 3, activation='softmax', padding='same')(x)
  ```
  
-## Training 
+## Setp 4 - Training 
 
-The FCN was then trained on sample data with given hyperparameters to compile and train the model. 
+The FCN was then trained on sample data with given hyperparameters to compile and train the model. I switched to Amazon AWS to run the model due to the length of time training takes. With the hyperparameters below the model takes over an hour to train on a p2.xlarge machine.
 
 ### Hyperparameters
 
@@ -127,7 +127,7 @@ workers = 2
 
 I found that at least 20 epochs were required to acheive the accuracy required. I ran the model on an AWS instance for speed. A large number of steps per epoch was key to getting a better score. The learning rate is quite low, made possible by the nomralization steps. Higher learning rates caused the model to diverge as the epochs proceeded.
 
-Two of the 20 training curves are shown for brevity:
+I trained the model. Two of the 20 training curves are shown for brevity:
 
 <p align="center">
 <table>
@@ -146,7 +146,7 @@ Two of the 20 training curves are shown for brevity:
 </p>
 
 
-## Prediction 
+## Step 5 - Prediction 
 
 The predictions are compared to the mask images, which are the ground truth labels, to evaluate how well the model is doing under different conditions.
 
@@ -202,7 +202,7 @@ The student displays a solid understanding of the limitations to the neural netw
 
 The student is able to clearly articulate whether this model and data would work well for following another object (dog, cat, car, etc.) instead of a human and if not, what changes would be required.
 
-## Running the Model in the Simulator
+## Step 6 - Running the Model in the Simulator
 
 <p align="center">
 <table>
@@ -217,9 +217,9 @@ The student is able to clearly articulate whether this model and data would work
 </table>
 </p>
 
-## Model
+## Step 7 - Model Accuracy
 
-The model is submitted in hdf5 format (.h5) in the git repository.
+The model is submitted in hdf5 format (.h5) in the git repository. The model notebook `model_training.ipynb` is also avalable in the git repository.
 
 The neural network obtained an accuracy greater than or equal to 40% (0.40) using the Intersection over Union (IoU) metric. 
 
@@ -227,4 +227,10 @@ The neural network obtained an accuracy greater than or equal to 40% (0.40) usin
 ### The final score was 0.407318352164
 
 The required final score was met.
+
+## Future Enhancements
+
+The score achieved was marginal. Future enhancements might include more convolutional layers to retain more information through the layers. Certainly more time could be spent tuning the hyperparameters. Tuning takes a long time - over an hour on an AWS machine, which can get expensive. One improvement would be a more interactive approach, where when the count of epochs show little improvement, or overfitting, that the process could be stopped and the intermediate model results saved. This would save time in going back and re-running the model with fewer epochs.
+
+
 
