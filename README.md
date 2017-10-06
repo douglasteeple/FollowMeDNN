@@ -100,6 +100,36 @@ def fcn_model(inputs, num_classes):
     return layers.Conv2D(num_classes, 3, activation='softmax', padding='same')(x)
  ```
  
+## Training 
+
+The FCN was then trained on sample data with given hyperparameters to compile and train the model. Two of the 20 training curves are shown for brevity:
+
+<p align="center">
+<table>
+    <tr>
+        <th>Epoch 2</th><th>Epoch 20</th>
+    </tr>
+    <tr>
+        <td>
+            <img height="240" src="./docs/misc/trainingcurves2.png"/>
+        </td>
+        <td>
+            <img height="240" src="./docs/misc/trainingcurves20.png"/>
+        </td>
+    </tr>
+</table>
+</p>
+
+
+## Prediction 
+
+Now that you have your model trained and saved, you can make predictions on your validation dataset. These predictions can be compared to the mask images, which are the ground truth labels, to evaluate how well your model is doing under different conditions.
+There are three different predictions available from the helper code provided:
+patrol_with_targ: Test how well the network can detect the hero from a distance.
+patrol_non_targ: Test how often the network makes a mistake and identifies the wrong person as the target.
+following_images: Test how well the network can identify the target while following them.
+
+
 The write-up / README should include a statement and supporting figures / images that explain how each rubric item was addressed, and specifically where in the code each step was handled. The write-up should include a discussion of what worked, what didn't and how the project implementation could be improved going forward.
 
 This report should be written with a technical emphasis (i.e. concrete, supporting information and no 'hand-waiving'). Specifications are met if a reader would be able to replicate what you have done based on what was submitted in the report. This means all network architecture should be explained, parameters should be explicitly stated with factual justifications, and plots / graphs are used where possible to further enhance understanding. A discussion on potential improvements to the project submission should also be included for future enhancements to the network / parameters that could be used to increase accuracy, efficiency, etc. It is not required to make such enhancements, but these enhancements should be explicitly stated in its own section titled "Future Enhancements".
