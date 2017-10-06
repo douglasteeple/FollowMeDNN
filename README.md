@@ -1,7 +1,7 @@
 
 ## Deep Learning Project ##
 
-This project involved training a deep neural network to identify and track a target in simulation. This target is called the "hero" throughout this documentation.
+This project involved training a fullt convolutional deep neural network to learn and later identify and track a target in simulation. This target is called the "hero" throughout this documentation.
 
 [image_0]: ./docs/misc/follow.png
 ![Following Image][image_0] 
