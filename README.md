@@ -1,18 +1,18 @@
 
 ## Deep Learning Project ##
 
-This project implements a fully convolutional deep neural network supporting the semantic segmentation model. Semantic segmentation is superior to bounding boxes as it accurately segments to the actual shape of the object. The DNN learns and later identifies and tracks a target in simulation. This target is called the "hero" throughout this documentation. In this project we:
+This project implements a fully convolutional deep neural network supporting the semantic segmentation model. Semantic segmentation is superior to bounding boxes as it accurately segments to the actual shape of the object. The DNN learns and later identifies and tracks a target in simulation. This target is called the `hero` throughout this documentation. In this project I:
 
-* implement the Fully Convolutional Network (FCN) deep neural network
-* gather simulation data, training and validation, with and without hero, using the Unity simulator
-* train the model on an Amazon AWS instance
-* check the score for accuracy
-* run the model in the simulator to follow the hero
+* Implemented the Fully Convolutional Network (FCN) deep neural network.
+* Gathered simulation data, training and validation, with and without hero, using the Unity simulator.
+* Trained the model on an Amazon AWS instance.
+* Checked the score for accuracy.
+* Ran the model in the simulator to follow the hero.
 
 <center>
 <table>
     <tr>
-        <th>Follow Me</th>
+        <th>Follow Me Project - Figure 1</th>
     </tr>
     <tr>
         <td>
@@ -22,7 +22,7 @@ This project implements a fully convolutional deep neural network supporting the
 </table>
 </center>
 
-## Step 1 Separable Convolutions and Batch Normalization
+## Step 1 - Separable Convolutions and Batch Normalization
 
 The Encoder for the FCN requires separable convolution layers, due to their advantages as explained in the classroom. The 1x1 convolution layer in the FCN, is a regular convolution. Each function includes batch normalization with the ReLU activation function applied to the layers. Two function were provided, `separable_conv2d_batchnorm`, profiding a normalized separable 2 dimensional convolution and `conv2d_batchnorm` providing a simple normalized 2 dimensional convolution.
 
@@ -36,11 +36,11 @@ Why separable convolution layers?
 
 Separable convolution layers consist of a convolution over each channel of an input layer, followed by a 1x1 convolution taking the output channels from the previous step and then combining them into an output layer. Separable convolution helps by reducing the number of parameters. The reduction in the parameters improves runtime performance. Separable convolution layers also reduce overfitting due to fewer parameters.
 
-## Step 2 Bilinear Upsampling
+## Step 2 - Bilinear Upsampling
 
-The function `bilinear_upsample` provided implements the bilinear upsampling layer. Bilinear upsampling uses the weighted average of four nearest pixels, located diagonally to a given pixel, to estimate a new pixel intensity value. It is used in the decoder block to upsample the input to the larger layer.
+The function `bilinear_upsample()` provided implements the bilinear upsampling layer. Bilinear upsampling uses the weighted average of four nearest pixels, diagonal to a given pixel, to estimate a new pixel value. It is used in the decoder block to upsample the input to the larger layer.
 
-## Building the Model 
+## Step 3 - Building the Model 
 
 The steps in building the model are:
 * Create an encoder_block
@@ -49,7 +49,7 @@ The steps in building the model are:
 
 ### The Encoder Block
 
-The encoder block includes a separable convolution layer using the `separable_conv2d_batchnorm()` function. 
+The encoder block includes a separable convolution layer using the `separable_conv2d_batchnorm()` function:
 
 ```
 def encoder_block(input_layer, filters, strides):
@@ -59,9 +59,9 @@ def encoder_block(input_layer, filters, strides):
 
 ### The Decoder Block
 
-The decoder block is comprised of three parts:
-* A bilinear upsampling layer using the upsample_bilinear() function.
-* A layer concatenation step.
+The decoder block consists of:
+* A bilinear upsampling layer using the `upsample_bilinear()` function.
+* Layer concatenation.
 * Several separable convolution layers to extract more spatial information from prior layers.
 
 ```
@@ -80,9 +80,9 @@ def decoder_block(small_ip_layer, large_ip_layer, filters):
 ### The FCN Model
 
 There are three steps in building the model:
-* Add encoder blocks to build the encoder layers.
-* Add a 1x1 Convolution layer using the `conv2d_batchnorm()` function. 1x1 convolutions require a kernel and stride of 1.
-* Add the same number of decoder blocks for the decoder layers to upsample to the original image size.
+* Encoder blocks to build the encoder layers.
+* A 1x1 Convolution layer using the `conv2d_batchnorm()` function, with a kernel_size and stride of 1.
+* The same number of decoder blocks for the decoder layers to create to the original image size.
 
 ```
 def fcn_model(inputs, num_classes):
@@ -114,8 +114,17 @@ The write-up conveys the student's understanding of the parameters chosen for th
 
 The student explains their neural network parameters including the values selected and how these values were obtained (i.e. how was hyper tuning performed? Brute force, etc.) Hyper parameters include, but are not limited to:
 
-### Hyper Parameters
-The following hyper parameters were used:
+### Hyperparameters
+
+The hyperparameters are:
+
+* `batch_size`: number of training samples/images that get propagated through the network in a single pass.
+* `num_epochs`: number of times the entire training dataset gets propagated through the network.
+* `steps_per_epoch`: number of batches of training images that go through the network in 1 epoch.
+* `validation_steps`: number of batches of validation images that go through the network in 1 epoch.
+* `workers`: maximum number of processes.
+
+The following hyperparameters were used:
 
 ```
 learning_rate = 0.005
@@ -126,7 +135,7 @@ validation_steps = 50
 workers = 2
 ```
 
-I found that at least 20 epochs were required to acheive the accuracy required. I ran the model on an AWS instance for speed. A large number of steps per epoch was key to getting a better score. The learning rate is quite low. Higher learning rates caused the model to diverge as the epochs proceeded.
+I found that at least 20 epochs were required to acheive the accuracy required. I ran the model on an AWS instance for speed. A large number of steps per epoch was key to getting a better score. The learning rate is quite low, made possible by the nomralization steps. Higher learning rates caused the model to diverge as the epochs proceeded.
 
 All configurable parameters should be explicitly stated and justified.
 
