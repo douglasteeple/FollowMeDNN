@@ -4,7 +4,7 @@
 This project involved training a deep neural network to identify and track a target in simulation. This target is called the "hero" throughout this documentation.
 
 [image_0]: ./docs/misc/follow.png
-![alt text][FollowingImage] 
+![Following Image][image_0] 
 
 ### Following the Hero - Figure 1
 
