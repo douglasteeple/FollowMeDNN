@@ -1,7 +1,15 @@
 
 ## Deep Learning Project ##
 
-This project implements a fully convolutional deep neural network supporting the semantic segmentation model. Semantic segmentation is superior to bounding boxes as it accurately segments to the actual shape of the object. The DNN learns and later identifies and tracks a target in simulation. This target is called the `hero` throughout this documentation. In this project I:
+This project implements a fully convolutional deep neural network for semantic segmentation. Semantic segmentation is superior to bounding boxes as it accurately segments to the actual shape of the object. The DNN learns and later identifies and tracks a target in simulation. This target is called the `hero` throughout this documentation. 
+
+In a Fully Connected Layer each neuron is connected to every neuron in the previous layer, and each connection has it's own weight. This is a general purpose connection pattern making no assumptions about features in the data. 
+
+A convolutional layer each neuron is only connected to a few nearby neurons in the previous layer, and the same set of weights is used for every neuron. Convolutional layers are used for image data where the features are local (e.g. a "person" consists of a set of nearby pixels, not spread across the image), and equally likely to occur anywhere in the image. The fewer number of connections and weights make convolutional layers computationally cheaper than Fully Connected Layers.
+
+The name `convolutional` network comes from the fact that the local connection pattern and shared weight scheme can be interpreted as a filter being "convolved" with the input/image.
+
+This project consists of the following:
 
 * Implemented the Fully Convolutional Network (FCN) deep neural network.
 * Gathered simulation data, training and validation, with and without hero, using the Unity simulator.
@@ -16,11 +24,16 @@ This project implements a fully convolutional deep neural network supporting the
     </tr>
     <tr>
         <td>
-            <img height="240" src="./docs/misc/follow.png"/>
+            <img height="300" src="./docs/misc/follow.png"/>
         </td>
     </tr>
 </table>
 </p>
+
+## Gathering Simulation Data
+
+Sample data was provided by the authors with the project. Gathering more data with the simulator was meant to augment the existing data and give the students a feeling for the process of gathering data.
+
 
 ## The Model
 
@@ -33,7 +46,7 @@ The FCN model consists of inputs that are passed through batch normed convolutio
     </tr>
     <tr>
         <td>
-            <img height="240" src="./docs/misc/fcn.png"/>
+            <img height="320" src="./docs/misc/fcn.png"/>
         </td>
     </tr>
 </table>
@@ -245,7 +258,9 @@ The neural network obtained an accuracy greater than or equal to 40% (0.40) usin
 ### The final IoU was 0.553580020823. 
 ### The final score was 0.407318352164
 
-The required final score was met.
+The required final score required by the rubric was met.
+
+The model fundamentally could be trained to recognize and follow other shapes such as cats or dogs, but that would require a large set of training and validation images.
 
 ## Future Enhancements
 
