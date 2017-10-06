@@ -22,9 +22,17 @@ This project implements a fully convolutional deep neural network supporting the
 </table>
 </center>
 
-## Step 1 Separable Convolutions
+## Step 1 Separable Convolutions and Batch Normalization
 
-The Encoder for the FCN requires separable convolution layers, due to their advantages as explained in the classroom. The 1x1 convolution layer in the FCN, however, is a regular convolution. Each includes batch normalization with the ReLU activation function applied to the layers. Two function were provided, *separable_conv2d_batchnorm*, profiding a normalized separable 2 dimensional convolution and *conv2d_batchnorm* providing a simple normalized 2 dimensional convolution.
+The Encoder for the FCN requires separable convolution layers, due to their advantages as explained in the classroom. The 1x1 convolution layer in the FCN, is a regular convolution. Each function includes batch normalization with the ReLU activation function applied to the layers. Two function were provided, *separable_conv2d_batchnorm*, profiding a normalized separable 2 dimensional convolution and *conv2d_batchnorm* providing a simple normalized 2 dimensional convolution.
+
+Batch normalization has many benefits:
+
+* Networks train faster because convergence is quicker, resulting in overall performance improvement.
+* Batch normalization allows higher learning rates, since the normalization helps gradient descent to converge. 
+* Batch normalization adds some noise to the network, but works as well as dropout in improving performance.
+
+Separable convolution layers consist of a convolution over each channel of an input layer, followed by a 1x1 convolution taking the output channels from the previous step and then combining them into an output layer. Separable convolution reduces the number of parameters.
 
 The write-up / README should include a statement and supporting figures / images that explain how each rubric item was addressed, and specifically where in the code each step was handled. The write-up should include a discussion of what worked, what didn't and how the project implementation could be improved going forward.
 
