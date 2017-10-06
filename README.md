@@ -201,10 +201,10 @@ The student is able to clearly articulate whether this model and data would work
 
 ## Running the Model in the Simulator
 
-<center>
+<p align="center">
 <table>
     <tr>
-        <th>Following The Hero (Click to view)</th>
+        <th>Following The Hero (Click to View Movie)</th>
     </tr>
     <tr>
         <td>
@@ -212,14 +212,16 @@ The student is able to clearly articulate whether this model and data would work
         </td>
     </tr>
 </table>
-</center>
+</p>
 
 ## Model
 
 The model is submitted in hdf5 format (.h5) in the git repository.
 
 The neural network obtained an accuracy greater than or equal to 40% (0.40) using the Intersection over Union (IoU) metric. 
-The final IoU was 0.553580020823. 
-The final score was 0.407318352164
+
+### The final IoU was 0.553580020823. 
+### The final score was 0.407318352164
+
 The required final score was met.
 
