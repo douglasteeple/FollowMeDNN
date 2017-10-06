@@ -12,8 +12,11 @@ This project implements a fully convolutional deep neural network supporting the
 [image_0]: ./docs/misc/follow.png
 ![Following Image][image_0] 
 
-###                                  Following the Hero - Figure 1
+<center>
 
+### Following the Hero - Figure 1
+
+</center>
 
 ## Step 1 Separable Convolutions
 
@@ -62,6 +65,9 @@ The student is able to identify the use of various reasons for encoding / decodi
 The student displays a solid understanding of the limitations to the neural network with the given data chosen for various follow-me scenarios which are conveyed in the write-up.
 
 The student is able to clearly articulate whether this model and data would work well for following another object (dog, cat, car, etc.) instead of a human and if not, what changes would be required.
+
+## Running the Model in the Simulator
+
 
 ## Model
 
