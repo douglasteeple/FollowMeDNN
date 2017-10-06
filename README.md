@@ -24,16 +24,82 @@ This project implements a fully convolutional deep neural network supporting the
 
 ## Step 1 Separable Convolutions and Batch Normalization
 
-The Encoder for the FCN requires separable convolution layers, due to their advantages as explained in the classroom. The 1x1 convolution layer in the FCN, is a regular convolution. Each function includes batch normalization with the ReLU activation function applied to the layers. Two function were provided, *separable_conv2d_batchnorm*, profiding a normalized separable 2 dimensional convolution and *conv2d_batchnorm* providing a simple normalized 2 dimensional convolution.
+The Encoder for the FCN requires separable convolution layers, due to their advantages as explained in the classroom. The 1x1 convolution layer in the FCN, is a regular convolution. Each function includes batch normalization with the ReLU activation function applied to the layers. Two function were provided, `separable_conv2d_batchnorm`, profiding a normalized separable 2 dimensional convolution and `conv2d_batchnorm` providing a simple normalized 2 dimensional convolution.
 
-Batch normalization has many benefits:
+Why batch normalization?
 
 * Networks train faster because convergence is quicker, resulting in overall performance improvement.
-* Batch normalization allows higher learning rates, since the normalization helps gradient descent to converge. 
+* Batch normalization allows higher learning rates, since the normalization helps gradient descent to converge more quickly. 
 * Batch normalization adds some noise to the network, but works as well as dropout in improving performance.
 
-Separable convolution layers consist of a convolution over each channel of an input layer, followed by a 1x1 convolution taking the output channels from the previous step and then combining them into an output layer. Separable convolution reduces the number of parameters.
+Why separable convolution layers?
 
+Separable convolution layers consist of a convolution over each channel of an input layer, followed by a 1x1 convolution taking the output channels from the previous step and then combining them into an output layer. Separable convolution helps by reducing the number of parameters. The reduction in the parameters improves runtime performance. Separable convolution layers also reduce overfitting due to fewer parameters.
+
+## Step 2 Bilinear Upsampling
+
+The function `bilinear_upsample` provided implements the bilinear upsampling layer. Bilinear upsampling uses the weighted average of four nearest pixels, located diagonally to a given pixel, to estimate a new pixel intensity value. It is used in the decoder block to upsample the input to the larger layer.
+
+## Building the Model 
+
+The steps in building the model are:
+* Create an encoder_block
+* Create a decoder_block
+* Build the FCN consisting of encoder blocks, a 1x1 convolution, and decoder blocks. 
+
+### The Encoder Block
+
+The encoder block includes a separable convolution layer using the `separable_conv2d_batchnorm()` function. 
+
+```
+def encoder_block(input_layer, filters, strides):
+    output_layer = separable_conv2d_batchnorm(input_layer, filters, strides=strides)
+    return output_layer
+```
+
+### The Decoder Block
+
+The decoder block is comprised of three parts:
+* A bilinear upsampling layer using the upsample_bilinear() function.
+* A layer concatenation step.
+* Several separable convolution layers to extract more spatial information from prior layers.
+
+```
+def decoder_block(small_ip_layer, large_ip_layer, filters):   
+    # Upsample
+    sampled = bilinear_upsample(small_ip_layer)
+    # Concatenate the upsampled and large input layers using layers.concatenate
+    cat = layers.concatenate([sampled, large_ip_layer])
+    # Add some number of separable convolution layers
+    conv1 = SeparableConv2DKeras(filters=filters,kernel_size=1, strides=1,padding='same', activation='relu')(cat)
+    conv2 = SeparableConv2DKeras(filters=filters,kernel_size=1, strides=1,padding='same', activation='relu')(conv1)
+    output_layer = SeparableConv2DKeras(filters=filters,kernel_size=1, strides=1,padding='same', activation='relu')(conv2)
+    return output_layer
+```
+
+### The FCN Model
+
+There are three steps in building the model:
+* Add encoder blocks to build the encoder layers.
+* Add a 1x1 Convolution layer using the `conv2d_batchnorm()` function. 1x1 convolutions require a kernel and stride of 1.
+* Add the same number of decoder blocks for the decoder layers to upsample to the original image size.
+
+```
+def fcn_model(inputs, num_classes):
+    # add some number of encode blocks
+    layer1 = encoder_block(inputs, 32, strides=2)
+    layer2 = encoder_block(layer1, 64, strides=2)
+    layer3 = encoder_block(layer2, 64, strides=2)    
+    # Add 1x1 Convolution layer using conv2d_batchnorm().
+    conv2d_batchnormed = conv2d_batchnorm(layer3, 64, kernel_size=1, strides=1)
+    # Add the same number of Decoder Blocks as the number of Encoder Blocks
+    layer4 = decoder_block(conv2d_batchnormed, layer2, 64)
+    layer5 = decoder_block(layer4, layer1, 64)
+    x = decoder_block(layer5, inputs, 32)
+    # The function returns the output layer of your model. "x" is the final layer obtained from the last decoder_block()
+    return layers.Conv2D(num_classes, 3, activation='softmax', padding='same')(x)
+ ```
+ 
 The write-up / README should include a statement and supporting figures / images that explain how each rubric item was addressed, and specifically where in the code each step was handled. The write-up should include a discussion of what worked, what didn't and how the project implementation could be improved going forward.
 
 This report should be written with a technical emphasis (i.e. concrete, supporting information and no 'hand-waiving'). Specifications are met if a reader would be able to replicate what you have done based on what was submitted in the report. This means all network architecture should be explained, parameters should be explicitly stated with factual justifications, and plots / graphs are used where possible to further enhance understanding. A discussion on potential improvements to the project submission should also be included for future enhancements to the network / parameters that could be used to increase accuracy, efficiency, etc. It is not required to make such enhancements, but these enhancements should be explicitly stated in its own section titled "Future Enhancements".
