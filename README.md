@@ -1,13 +1,13 @@
 
 ## Deep Learning Project ##
 
-This project implements a fully convolutional deep neural network for semantic segmentation. Semantic segmentation is superior to bounding boxes as it accurately segments to the actual shape of the object. The DNN learns and later identifies and tracks a target in simulation. This target is called the `hero` throughout this documentation. 
+This project implements a fully convolutional Deep Neural Network (DNN) for semantic segmentation. Semantic segmentation is superior to bounding boxes as it accurately segments to the actual shape of the object. The DNN learns and later identifies and tracks a target in simulation. This target is called the `hero` throughout this documentation. 
 
 In a Fully Connected Layer each neuron is connected to every neuron in the previous layer, and each connection has it's own weight. This is a general purpose connection pattern making no assumptions about features in the data. 
 
 A convolutional layer each neuron is only connected to a few nearby neurons in the previous layer, and the same set of weights is used for every neuron. Convolutional layers are used for image data where the features are local (e.g. a "person" consists of a set of nearby pixels, not spread across the image), and equally likely to occur anywhere in the image. The fewer number of connections and weights make convolutional layers computationally cheaper than Fully Connected Layers.
 
-The name `convolutional` network comes from the fact that the local connection pattern and shared weight scheme can be interpreted as a filter being "convolved" with the input/image.
+The name `convolutional` network comes from the fact that the local connection pattern and shared weight scheme can be interpreted as a filter being "convolved" with the input.
 
 This project consists of the following:
 
@@ -163,7 +163,7 @@ def fcn_model(inputs, num_classes):
     return layers.Conv2D(num_classes, 3, activation='softmax', padding='same')(x)
  ```
  
-## Setp 4 - Training 
+## Step 4 - Training 
 
 The FCN was then trained on sample data with given hyperparameters to compile and train the model. I switched to Amazon AWS to run the model due to the length of time training takes. With the hyperparameters below the model takes over an hour to train on a p2.xlarge machine.
 
@@ -247,7 +247,7 @@ The predictions are compared to the mask images, which are the ground truth labe
 </table>
 </p>
 
-## Step 7 - Model Accuracy
+## Step 7 - Results and Model Accuracy
 
 The model is submitted in hdf5 format (.h5) in the git repository. The model notebook `model_training.ipynb` is also avalable in the git repository.
 
@@ -260,9 +260,11 @@ The required final score required by the rubric was met.
 
 The model fundamentally could be trained to recognize and follow other shapes such as cats or dogs, but that would require a large set of training and validation images.
 
-## Future Enhancements
+## Future Enhancements And Comments
 
 The score achieved was marginal. Future enhancements might include more convolutional layers to retain more information through the layers or changes in the kernel size. Certainly more time could be spent tuning the hyperparameters. Tuning takes a long time - over an hour on an AWS machine, which can get expensive. One improvement would be a more interactive approach, where when the count of epochs show little improvement, or overfitting, that the process could be stopped and the intermediate model results saved. This would save time in going back and re-running the model with fewer epochs.
+
+It is not clear how the FCN scales with more than one label. In this project there was a single 'hero' label. Even so, training effort was significant and accuracy marginal. I do not know how it would scals to hundreds or thousands of labels.
 
 
 
