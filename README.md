@@ -45,11 +45,22 @@ The quadsim has been augmented with special keys to set quadcopter waypoints (P)
 <p align="center">
 <table>
     <tr>
-        <th>QuadSim Gathering Data - Figure 2</th>
+        <th>QuadSim Gathering Data - Figure 2</th><th>Waypoints</th>
     </tr>
     <tr>
         <td>
             <img height="240" src="./docs/misc/quadsimstart.png"/>
+        </td>
+        <td>
+            <img height="240" src="./docs/misc/simrun.png"/>
+        </td>
+    </tr>
+    <tr>
+        <th cols=2>Spawn</th>
+    </tr>
+    <tr>
+        <td cols=2>
+            <img height="240" src="./docs/misc/spawn.png"/>
         </td>
     </tr>
 </table>
