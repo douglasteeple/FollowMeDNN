@@ -19,9 +19,7 @@ This project consists of the following:
 
 <p align="center">
 <table>
-    <tr>
-        <th>Follow Me Project - Figure 1</th>
-    </tr>
+    <caption>Follow Me Project - Figure 1</caption>
     <tr>
         <td>
             <img height="300" src="./docs/misc/follow.png"/>
@@ -44,8 +42,9 @@ The quadsim has been augmented with special keys to set quadcopter waypoints (P)
 
 <p align="center">
 <table>
+    <caption>QuadSim Gathering Data - Figure 2</caption>
     <tr>
-        <th>QuadSim Gathering Data - Figure 2</th><th>Waypoints</th>
+        <th>Startup</th><th>Waypoints</th>
     </tr>
     <tr>
         <td>
@@ -83,9 +82,7 @@ The FCN model consists of inputs that are passed through batch normed convolutio
 
 <p align="center">
 <table>
-    <tr>
-        <th>FCN Model - Figure 3</th>
-    </tr>
+    <caption>FCN Model - Figure 3</caption>
     <tr>
         <td>
             <img height="320" src="./docs/misc/fcn.png"/>
@@ -205,6 +202,7 @@ I trained the model. Two of the 20 training curves are shown for brevity:
 
 <p align="center">
 <table>
+    <caption>Training Curves</caption>
     <tr>
         <th>Training Epoch 2</th><th>Training Epoch 20</th>
     </tr>
@@ -229,6 +227,7 @@ The predictions are compared to the mask images, which are the ground truth labe
 
 <p align="center">
 <table cols=2>
+    <caption>Prediction</caption>
     <tr>
         <th>Prediction patrol with target</th><th>Prediction patrol without target</th>
     </tr>
@@ -255,9 +254,7 @@ The predictions are compared to the mask images, which are the ground truth labe
 
 <p align="center">
 <table>
-    <tr>
-        <th>Following The Hero (Click to View Movie) - Figure 4</th>
-    </tr>
+    <caption>Following The Hero (Click to View Movie) - Figure 4</caption>
     <tr>
         <td>
             <a href="http://douglasteeple.com/DNN/ScreenRecording2.mp4" target=_blank><img height="240" src="http://douglasteeple.com/DNN/ScreenRecording2.png"/></a>
