@@ -228,7 +228,7 @@ The predictions are compared to the mask images, which are the ground truth labe
 * patrol_non_targ: Test how often the network makes a mistake and identifies the wrong person as the target.
 
 <p align="center">
-<table>
+<table cols=2>
     <tr>
         <th>Prediction patrol with target</th><th>Prediction patrol without target</th>
     </tr>
@@ -238,6 +238,14 @@ The predictions are compared to the mask images, which are the ground truth labe
         </td>
         <td>
             <img height="480" src="./docs/misc/pred2.png"/>
+        </td>
+    </tr>
+    <tr>
+        <th cols=2>Prediction patrol with target in distance</th>
+    </tr>
+    <tr>
+        <td cols=2>
+            <img height="480" src="./docs/misc/pred3.png"/>
         </td>
     </tr>
 </table>
