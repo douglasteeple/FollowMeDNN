@@ -32,8 +32,39 @@ This project consists of the following:
 
 ## Gathering Simulation Data
 
-Sample data was provided by the authors with the project. Gathering more data with the simulator was meant to augment the existing data and give the students a feeling for the process of gathering data.
+Sample data was provided by the authors with the project. Gathering more data with the simulator was meant to augment the existing data and give the students a feeling for the process of gathering data. 
 
+There are 3 major aspects to the data collection process that are controlled in order determine the type of data collected:
+
+* The path the quad will take while on patrol.
+* The path the hero will walk.
+* The locations of distractor spawns.
+
+The quadsim has been augmented with special keys to set quadcopter waypoints (P), so set hero waypoint (O) and to set crowd spawn points (I). 
+
+<p align="center">
+<table>
+    <tr>
+        <th>QuadSim Gathering Data - Figure 2</th>
+    </tr>
+    <tr>
+        <td>
+            <img height="240" src="./docs/misc/quadsimstart.png"/>
+        </td>
+    </tr>
+</table>
+</p>
+
+
+The path of the quadcopter is set by steering it through the town of Udacity, setting the waypoints. After setting these waypoints, data collection begins by pressing the R key (press again to stop).
+
+Data should be collected in these situations::
+
+* Following the hero in a very dense crowd.
+* Patrol directly over the hero.
+* Quad is on standard patrol.
+
+This data was collected as per instructions, though I found my skills at collecting data were weak and my data tended just to lower the overall score.
 
 ## The Model
 
@@ -42,7 +73,7 @@ The FCN model consists of inputs that are passed through batch normed convolutio
 <p align="center">
 <table>
     <tr>
-        <th>FCN Model - Figure 2</th>
+        <th>FCN Model - Figure 3</th>
     </tr>
     <tr>
         <td>
@@ -239,7 +270,7 @@ The student is able to clearly articulate whether this model and data would work
 <p align="center">
 <table>
     <tr>
-        <th>Following The Hero (Click to View Movie)</th>
+        <th>Following The Hero (Click to View Movie) - Figure 4</th>
     </tr>
     <tr>
         <td>
