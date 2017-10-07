@@ -188,7 +188,7 @@ validation_steps = 50
 workers = 2
 ```
 
-I found that at least 20 epochs were required to acheive the accuracy required. I ran the model on an AWS instance for speed. A large number of steps per epoch was key to getting a better score. The learning rate is quite low, made possible by the nomralization steps. Higher learning rates caused the model to diverge as the epochs proceeded.
+I found that at least 20 epochs were required to acheive the accuracy required. I ran the model on an AWS instance for speed. A large number of steps per epoch was key to getting a better score. The learning rate is quite low, made possible by the nomralization steps. Higher learning rates caused the model to diverge as the epochs proceeded. Batch size had little effect at sizes of 32, 64 and 128, and so was left at 64. Steps per epoch is an influential parameter, a large number of steps giving better results empirically. Validation steps was left unchange. Workers has to do with the number of threads spawned, and can have a good effect on speed depending on the hardware. It was left at 2.
 
 I trained the model. Two of the 20 training curves are shown for brevity:
 
@@ -232,39 +232,6 @@ The predictions are compared to the mask images, which are the ground truth labe
 </table>
 </p>
 
-
-
-The write-up / README should include a statement and supporting figures / images that explain how each rubric item was addressed, and specifically where in the code each step was handled. The write-up should include a discussion of what worked, what didn't and how the project implementation could be improved going forward.
-
-This report should be written with a technical emphasis (i.e. concrete, supporting information and no 'hand-waiving'). Specifications are met if a reader would be able to replicate what you have done based on what was submitted in the report. This means all network architecture should be explained, parameters should be explicitly stated with factual justifications, and plots / graphs are used where possible to further enhance understanding. A discussion on potential improvements to the project submission should also be included for future enhancements to the network / parameters that could be used to increase accuracy, efficiency, etc. It is not required to make such enhancements, but these enhancements should be explicitly stated in its own section titled "Future Enhancements".
-
-The write-up conveys the an understanding of the network architecture.
-
-The student clearly explains each layer of the network architecture and the role that it plays in the overall network. The student can demonstrate the benefits and/or drawbacks different network architectures pertaining to this project and can justify the current network with factual data. Any choice of configurable parameters should also be explained in the network architecture.
-
-The student shall also provide a graph, table, diagram, illustration or figure for the overall network to serve as a reference for the reviewer.
-
-The write-up conveys the student's understanding of the parameters chosen for the the neural network.
-
-The student explains their neural network parameters including the values selected and how these values were obtained (i.e. how was hyper tuning performed? Brute force, etc.) Hyper parameters include, but are not limited to:
-
-
-All configurable parameters should be explicitly stated and justified.
-
-The student has a clear understanding and is able to identify the use of various techniques and concepts in network layers indicated by the write-up.
-
-The student is demonstrates a clear understanding of 1 by 1 convolutions and where/when/how it should be used.
-
-The student demonstrates a clear understanding of a fully connected layer and where/when/how it should be used.
-
-The student has a clear understanding of image manipulation in the context of the project indicated by the write-up.
-
-The student is able to identify the use of various reasons for encoding / decoding images, when it should be used, why it is useful, and any problems that may arise.
-
-The student displays a solid understanding of the limitations to the neural network with the given data chosen for various follow-me scenarios which are conveyed in the write-up.
-
-The student is able to clearly articulate whether this model and data would work well for following another object (dog, cat, car, etc.) instead of a human and if not, what changes would be required.
-
 ## Step 6 - Running the Model in the Simulator
 
 <p align="center">
@@ -295,7 +262,7 @@ The model fundamentally could be trained to recognize and follow other shapes su
 
 ## Future Enhancements
 
-The score achieved was marginal. Future enhancements might include more convolutional layers to retain more information through the layers. Certainly more time could be spent tuning the hyperparameters. Tuning takes a long time - over an hour on an AWS machine, which can get expensive. One improvement would be a more interactive approach, where when the count of epochs show little improvement, or overfitting, that the process could be stopped and the intermediate model results saved. This would save time in going back and re-running the model with fewer epochs.
+The score achieved was marginal. Future enhancements might include more convolutional layers to retain more information through the layers or changes in the kernel size. Certainly more time could be spent tuning the hyperparameters. Tuning takes a long time - over an hour on an AWS machine, which can get expensive. One improvement would be a more interactive approach, where when the count of epochs show little improvement, or overfitting, that the process could be stopped and the intermediate model results saved. This would save time in going back and re-running the model with fewer epochs.
 
 
 
