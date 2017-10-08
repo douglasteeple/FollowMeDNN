@@ -54,11 +54,14 @@ The quadsim has been augmented with special keys to set quadcopter waypoints (P)
         </td>
     </tr>
     <tr>
-        <th colspan=2>Spawn</th>
+        <th>Spawn</th><th>Distance Data Gathering</th>
     </tr>
     <tr>
-        <td colspan=2>
+        <td>
             <img height="240" src="./docs/misc/spawn.png"/>
+        </td>
+        <td>
+            <img height="240" src="./docs/misc/distance.png"/>
         </td>
     </tr>
 </table>
