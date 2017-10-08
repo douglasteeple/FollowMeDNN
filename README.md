@@ -17,6 +17,7 @@ This project consists of the following:
 * Checked the score for accuracy.
 * Ran the model in the simulator to follow the hero.
 
+
 <table align="center"> 
     <caption><bold>Follow Me Project - Figure 1<bold></caption>
     <tr>
@@ -25,6 +26,7 @@ This project consists of the following:
         </td>
     </tr>
 </table>
+
 
 ## Gathering Simulation Data
 
