@@ -19,7 +19,7 @@ This project consists of the following:
 
 
 <table align="center"> 
-    <caption><bold>Follow Me Project - Figure 1<bold></caption>
+    <caption align="center"><b>Follow Me Project - Figure 1</b></caption>
     <tr>
         <td>
             <img height="300" src="./docs/misc/follow.png"/>
@@ -41,7 +41,7 @@ There are 3 major aspects to the data collection process that are controlled in 
 The quadsim has been augmented with special keys to set quadcopter waypoints (P), so set hero waypoint (O) and to set crowd spawn points (I). 
 
 <table align="center"> 
-    <caption><bold>QuadSim Gathering Data - Figure 2</bold></caption>
+    <caption><b>QuadSim Gathering Data - Figure 2</b></caption>
     <tr>
         <th>Startup</th><th>Waypoints</th>
     </tr>
@@ -57,7 +57,7 @@ The quadsim has been augmented with special keys to set quadcopter waypoints (P)
         <th colspan=2>Spawn</th>
     </tr>
     <tr>
-        <td cols=2>
+        <td colspan=2>
             <img height="240" src="./docs/misc/spawn.png"/>
         </td>
     </tr>
@@ -79,7 +79,7 @@ This data was collected as per instructions, though I found my skills at collect
 The FCN model consists of inputs that are passed through batch normed convolution layers to the final batch normed layer which is 1x1 batch convolved. Then there are as many decoders as encorders that bilinear upsample each of the convolved layers to recreate the original image dimensions. Each decoder may have multiple separable convolution steps to extract more data. This diagram shows the overall process:
 
 <table align="center"> 
-    <caption><bold>FCN Model - Figure 3</bold></caption>
+    <caption><b>FCN Model - Figure 3</boldbcaption>
     <tr>
         <td>
             <img height="320" src="./docs/misc/fcn.png"/>
@@ -219,7 +219,7 @@ The predictions are compared to the mask images, which are the ground truth labe
 * patrol_non_targ: Test how often the network makes a mistake and identifies the wrong person as the target.
 
 <table align="center"> 
-    <caption><bold>Prediction - Figure 5</bold></caption>
+    <caption><b>Prediction - Figure 5</b></caption>
     <tr>
         <th>Prediction patrol with target</th><th>Prediction patrol without target</th>
     </tr>
@@ -244,7 +244,7 @@ The predictions are compared to the mask images, which are the ground truth labe
 ## Step 6 - Running the Model in the Simulator
 
 <table align="center">
-    <caption><bold>Following The Hero (Click to View Movie) - Figure 6</bold></caption>
+    <caption><b>Following The Hero (Click to View Movie) - Figure 6</b></caption>
     <tr>
         <td>
             <a href="http://douglasteeple.com/DNN/ScreenRecording2.mp4" target=_blank><img height="240" src="http://douglasteeple.com/DNN/ScreenRecording2.png"/></a>
