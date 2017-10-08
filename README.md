@@ -17,16 +17,14 @@ This project consists of the following:
 * Checked the score for accuracy.
 * Ran the model in the simulator to follow the hero.
 
-<p align="center">
 <table align="center"> 
-    <caption>Follow Me Project - Figure 1</caption>
+    <caption><bold>Follow Me Project - Figure 1<bold></caption>
     <tr>
         <td>
             <img height="300" src="./docs/misc/follow.png"/>
         </td>
     </tr>
 </table>
-</p>
 
 ## Gathering Simulation Data
 
@@ -40,9 +38,8 @@ There are 3 major aspects to the data collection process that are controlled in 
 
 The quadsim has been augmented with special keys to set quadcopter waypoints (P), so set hero waypoint (O) and to set crowd spawn points (I). 
 
-<p align="center">
 <table align="center"> 
-    <caption>QuadSim Gathering Data - Figure 2</caption>
+    <caption><bold>QuadSim Gathering Data - Figure 2</bold></caption>
     <tr>
         <th>Startup</th><th>Waypoints</th>
     </tr>
@@ -55,7 +52,7 @@ The quadsim has been augmented with special keys to set quadcopter waypoints (P)
         </td>
     </tr>
     <tr>
-        <th cols=2>Spawn</th>
+        <th colspan=2>Spawn</th>
     </tr>
     <tr>
         <td cols=2>
@@ -63,7 +60,6 @@ The quadsim has been augmented with special keys to set quadcopter waypoints (P)
         </td>
     </tr>
 </table>
-</p>
 
 
 The path of the quadcopter is set by steering it through the town of Udacity, setting the waypoints. After setting these waypoints, data collection begins by pressing the R key (press again to stop).
@@ -80,16 +76,14 @@ This data was collected as per instructions, though I found my skills at collect
 
 The FCN model consists of inputs that are passed through batch normed convolution layers to the final batch normed layer which is 1x1 batch convolved. Then there are as many decoders as encorders that bilinear upsample each of the convolved layers to recreate the original image dimensions. Each decoder may have multiple separable convolution steps to extract more data. This diagram shows the overall process:
 
-<p align="center">
 <table align="center"> 
-    <caption>FCN Model - Figure 3</caption>
+    <caption><bold>FCN Model - Figure 3</bold></caption>
     <tr>
         <td>
             <img height="320" src="./docs/misc/fcn.png"/>
         </td>
     </tr>
 </table>
-</p>
 
 The steps are detailed below:
 
@@ -200,9 +194,8 @@ I found that at least 20 epochs were required to acheive the accuracy required. 
 
 I trained the model. Two of the 20 training curves are shown for brevity:
 
-<p align="center">
 <table align="center"> 
-    <caption>Training Curves</caption>
+    <caption><bold>Training Curves - Figure 4</bold></caption>
     <tr>
         <th>Training Epoch 2</th><th>Training Epoch 20</th>
     </tr>
@@ -215,8 +208,6 @@ I trained the model. Two of the 20 training curves are shown for brevity:
         </td>
     </tr>
 </table>
-</p>
-
 
 ## Step 5 - Prediction 
 
@@ -225,9 +216,8 @@ The predictions are compared to the mask images, which are the ground truth labe
 * patrol_with_targ: Test how well the network can detect the hero from a distance.
 * patrol_non_targ: Test how often the network makes a mistake and identifies the wrong person as the target.
 
-<p align="center">
 <table align="center"> 
-    <caption>Prediction</caption>
+    <caption><bold>Prediction - Figure 5</bold></caption>
     <tr>
         <th>Prediction patrol with target</th><th>Prediction patrol without target</th>
     </tr>
@@ -248,20 +238,17 @@ The predictions are compared to the mask images, which are the ground truth labe
         </td>
     </tr>
 </table>
-</p>
 
 ## Step 6 - Running the Model in the Simulator
 
-<p align="center">
 <table align="center">
-    <caption>Following The Hero (Click to View Movie) - Figure 4</caption>
+    <caption><bold>Following The Hero (Click to View Movie) - Figure 6</bold></caption>
     <tr>
         <td>
             <a href="http://douglasteeple.com/DNN/ScreenRecording2.mp4" target=_blank><img height="240" src="http://douglasteeple.com/DNN/ScreenRecording2.png"/></a>
         </td>
     </tr>
 </table>
-</p>
 
 ## Step 7 - Evaluation
 
