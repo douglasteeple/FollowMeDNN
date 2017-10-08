@@ -3,9 +3,9 @@
 
 This project implements a fully convolutional Deep Neural Network (DNN) for semantic segmentation. Semantic segmentation is superior to bounding boxes as it accurately segments to the actual shape of the object. The DNN learns and later identifies and tracks a target in simulation. This target is called the `hero` throughout this documentation. 
 
-In a Fully Connected Layer each neuron is connected to every neuron in the previous layer, and each connection has it's own weight. This is a general purpose connection pattern making no assumptions about features in the data. 
+In a Fully Connected Layer each perceptron is connected to every perceptron in the previous layer, and each connection has it's own weight. This is a general purpose connection pattern making no assumptions about features in the data. 
 
-A convolutional layer each neuron is only connected to a few nearby neurons in the previous layer, and the same set of weights is used for every neuron. Convolutional layers are used for image data where the features are local (e.g. a "person" consists of a set of nearby pixels, not spread across the image), and equally likely to occur anywhere in the image. The fewer number of connections and weights make convolutional layers computationally cheaper than Fully Connected Layers.
+A convolutional layer each perceptron is only connected to a few nearby perceptrons in the previous layer, and the same set of weights is used for every perceptron. Convolutional layers are used for image data where the features are local (e.g. a "person" consists of a set of nearby pixels, not spread across the image), and equally likely to occur anywhere in the image. The fewer number of connections and weights make convolutional layers computationally cheaper than Fully Connected Layers.
 
 The name `convolutional` network comes from the fact that the local connection pattern and shared weight scheme can be interpreted as a filter being "convolved" with the input.
 
