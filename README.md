@@ -18,7 +18,7 @@ This project consists of the following:
 * Ran the model in the simulator to follow the hero.
 
 <p align="center">
-<table>
+<table align="center"> 
     <caption>Follow Me Project - Figure 1</caption>
     <tr>
         <td>
@@ -41,7 +41,7 @@ There are 3 major aspects to the data collection process that are controlled in 
 The quadsim has been augmented with special keys to set quadcopter waypoints (P), so set hero waypoint (O) and to set crowd spawn points (I). 
 
 <p align="center">
-<table>
+<table align="center"> 
     <caption>QuadSim Gathering Data - Figure 2</caption>
     <tr>
         <th>Startup</th><th>Waypoints</th>
@@ -81,7 +81,7 @@ This data was collected as per instructions, though I found my skills at collect
 The FCN model consists of inputs that are passed through batch normed convolution layers to the final batch normed layer which is 1x1 batch convolved. Then there are as many decoders as encorders that bilinear upsample each of the convolved layers to recreate the original image dimensions. Each decoder may have multiple separable convolution steps to extract more data. This diagram shows the overall process:
 
 <p align="center">
-<table>
+<table align="center"> 
     <caption>FCN Model - Figure 3</caption>
     <tr>
         <td>
@@ -201,7 +201,7 @@ I found that at least 20 epochs were required to acheive the accuracy required. 
 I trained the model. Two of the 20 training curves are shown for brevity:
 
 <p align="center">
-<table>
+<table align="center"> 
     <caption>Training Curves</caption>
     <tr>
         <th>Training Epoch 2</th><th>Training Epoch 20</th>
@@ -226,7 +226,7 @@ The predictions are compared to the mask images, which are the ground truth labe
 * patrol_non_targ: Test how often the network makes a mistake and identifies the wrong person as the target.
 
 <p align="center">
-<table cols=2>
+<table align="center"> 
     <caption>Prediction</caption>
     <tr>
         <th>Prediction patrol with target</th><th>Prediction patrol without target</th>
@@ -240,10 +240,10 @@ The predictions are compared to the mask images, which are the ground truth labe
         </td>
     </tr>
     <tr>
-        <th cols=2>Prediction patrol with target in distance</th>
+        <th colspan=2>Prediction patrol with target in distance</th>
     </tr>
     <tr>
-        <td cols=2>
+        <td colspan=2>
             <img height="480" src="./docs/misc/pred3.png"/>
         </td>
     </tr>
@@ -253,7 +253,7 @@ The predictions are compared to the mask images, which are the ground truth labe
 ## Step 6 - Running the Model in the Simulator
 
 <p align="center">
-<table>
+<table align="center">
     <caption>Following The Hero (Click to View Movie) - Figure 4</caption>
     <tr>
         <td>
@@ -263,18 +263,70 @@ The predictions are compared to the mask images, which are the ground truth labe
 </table>
 </p>
 
-## Step 7 - Results and Model Accuracy
+## Step 7 - Evaluation
 
 The model is submitted in hdf5 format (.h5) in the git repository. The model notebook `model_training.ipynb` is also avalable in the git repository.
 
+### Scores for while the quad is following behind the target. 
+
+```
+number of validation samples intersection over the union evaulated on 542
+average intersection over union for background is 0.9945721842931567
+average intersection over union for other people is 0.29802721156424944
+average intersection over union for the hero is 0.8897191676744332
+number true positives: 539, number false positives: 0, number false negatives: 0
+```
+
+### Scores for images while the quad is on patrol and the target is not visible
+```
+true_pos2, false_pos2, false_neg2, iou2 = scoring_utils.score_run_iou(val_no_targ, pred_no_targ)
+number of validation samples intersection over the union evaulated on 270
+average intersection over union for background is 0.9841569551047916
+average intersection over union for other people is 0.6716043102785466
+average intersection over union for the hero is 0.0
+number true positives: 0, number false positives: 108, number false negatives: 0
+```
+
+### This score measures how well the neural network can detect the target from far away
+```
+true_pos3, false_pos3, false_neg3, iou3 = scoring_utils.score_run_iou(val_with_targ, pred_with_targ)
+number of validation samples intersection over the union evaulated on 322
+average intersection over union for background is 0.9954061608049553
+average intersection over union for other people is 0.38558296997191444
+average intersection over union for the hero is 0.2174408739725172
+number true positives: 160, number false positives: 2, number false negatives: 141
+```
+
+### Sum all the true positives, etc from the three datasets to get a weight for the score
+```
+true_pos = true_pos1 + true_pos2 + true_pos3
+false_pos = false_pos1 + false_pos2 + false_pos3
+false_neg = false_neg1 + false_neg2 + false_neg3
+weight = true_pos/(true_pos+false_neg+false_pos)
+```
+
+`weight=0.7357894736842105`
+
+### The IoU for the dataset that never includes the hero is excluded from grading
+```
+final_IoU = (iou1 + iou3)/2
+```
+`final_IoU=0.553580020823`
+
+### And the final grade score is 
+```
+final_score = final_IoU * weight
+```
+`final_score=0.407318352164`
+
 The neural network obtained an accuracy greater than or equal to 40% (0.40) using the Intersection over Union (IoU) metric. 
 
-### The final IoU was 0.553580020823. 
-### The final score was 0.407318352164
+`The final IoU was 0.553580020823. `
+`The final score was 0.407318352164`
 
-The required final score required by the rubric was met.
+#### The required final score required by the rubric was met.
 
-The model fundamentally could be trained to recognize and follow other shapes such as cats or dogs, but that would require a large set of training and validation images.
+The model fundamentally could be trained to recognize and follow other shapes such as cats or dogs, but that would require a large set of training and validation images. We can see that the model does well with the hero up close and with no hero, but has trouble (many false negatives) with the target in the distance. This observation would indicate that more training and validation data with the hero far in the background would help the overal score.
 
 ## Future Enhancements And Comments
 
