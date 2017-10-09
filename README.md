@@ -54,7 +54,7 @@ The quadsim has been augmented with special keys to set quadcopter waypoints (P)
         </td>
     </tr>
     <tr>
-        <th>Spawn</th><th>Distance Data Gathering</th>
+        <th>Spawning Crowds</th><th>Distance Data Gathering</th>
     </tr>
     <tr>
         <td>
@@ -67,15 +67,15 @@ The quadsim has been augmented with special keys to set quadcopter waypoints (P)
 </table>
 
 
-The path of the quadcopter is set by steering it through the town of Udacity, setting the waypoints. After setting these waypoints, data collection begins by pressing the R key (press again to stop).
+The path of the quadcopter is set by steering it through the town of Udacity, setting the waypoints and crowd spawn points. After setting these waypoints, data collection begins by pressing the R key.
 
-Data should be collected in these situations::
+Data was collected in these situations:
 
 * Following the hero in a very dense crowd.
 * Patrol directly over the hero.
 * Quad is on standard patrol.
 
-This data was collected as per instructions, though I found my skills at collecting data were weak and my data tended just to lower the overall score.
+This data was collected as per instructions, though I found my skills at collecting data were weak and my data tended just to lower the overall score. In looking at scores, the problem area with a large number of false negatives, was finding the hero at a distance. So in my data collection I focussed on collection at a distance (see Distance Data Gathering run above).
 
 ## The Model
 
@@ -94,7 +94,7 @@ The steps are detailed below:
 
 ## Step 1 - Separable Convolutions and Batch Normalization
 
-The Encoder for the FCN requires separable convolution layers, due to their advantages as explained in the classroom. The 1x1 convolution layer in the FCN, is a regular convolution. Each function includes batch normalization with the ReLU activation function applied to the layers. Two function were provided, `separable_conv2d_batchnorm`, profiding a normalized separable 2 dimensional convolution and `conv2d_batchnorm` providing a simple normalized 2 dimensional convolution.
+The Encoder for the FCN requires separable convolution layers, as separable layers reduce the number of parameters. The 1x1 convolution layer in the FCN is a regular convolution. Each function includes batch normalization with the ReLU activation function applied to the layers. Two function were provided, `separable_conv2d_batchnorm`, profiding a normalized separable 2 dimensional convolution and `conv2d_batchnorm` providing a simple normalized 2 dimensional convolution.
 
 Why batch normalization?
 
@@ -152,7 +152,7 @@ def decoder_block(small_ip_layer, large_ip_layer, filters):
 There are three steps in building the model:
 * Encoder blocks to build the encoder layers.
 * A 1x1 Convolution layer using the `conv2d_batchnorm()` function, with a kernel_size and stride of 1.
-* The same number of decoder blocks for the decoder layers to create to the original image size.
+* The same number of decoder blocks for the decoder layers to recreate to the original image size.
 
 ```
 def fcn_model(inputs, num_classes):
@@ -195,7 +195,7 @@ validation_steps = 50
 workers = 2
 ```
 
-I found that at least 20 epochs were required to acheive the accuracy required. I ran the model on an AWS instance for speed. A large number of steps per epoch was key to getting a better score. The learning rate is quite low, made possible by the nomralization steps. Higher learning rates caused the model to diverge as the epochs proceeded. Batch size had little effect at sizes of 32, 64 and 128, and so was left at 64. Steps per epoch is an influential parameter, a large number of steps giving better results empirically. Validation steps was left unchange. Workers has to do with the number of threads spawned, and can have a good effect on speed depending on the hardware. It was left at 2.
+I found that at least 20 epochs were required to acheive the accuracy required. I ran the model on an AWS instance for speed. A large number of steps per epoch was key to getting a better score. The learning rate is quite low, made possible by the normalization steps. Higher learning rates caused the model to diverge as the epochs proceeded. Batch size had little effect at sizes of 32, 64 and 128, and so was left at 64. Steps per epoch is an influential parameter, a large number of steps giving better results empirically. Validation steps was left unchanged. Workers has to do with the number of threads spawned, and can have a good effect on speed depending on the hardware. It was left at 2.
 
 I trained the model. Two of the 20 training curves are shown for brevity:
 
@@ -257,7 +257,7 @@ The predictions are compared to the mask images, which are the ground truth labe
 
 ## Step 7 - Evaluation
 
-The model is submitted in hdf5 format (.h5) in the git repository. The model notebook `model_training.ipynb` is also avalable in the git repository.
+The model is submitted in hdf5 format (.h5) in the git repository. The model notebook `model_training.ipynb` is also avalable in the git repository. A snapshot of the notebook after the run is available on git in `mode_training.html`.
 
 ### Scores for while the quad is following behind the target. 
 
