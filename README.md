@@ -1,7 +1,7 @@
 
 ## Deep Learning Project ##
 
-This project implements a fully convolutional Deep Neural Network (DNN) for semantic segmentation. Semantic segmentation is superior to bounding boxes as it accurately segments to the actual shape of the object. The DNN learns and later identifies and tracks a target in simulation. This target is called the `hero` throughout this documentation. 
+This project implements a fully convolutional Deep Neural Network (DNN) for semantic segmentation. Semantic segmentation  accurately segments to the actual shape of the object unlike bounding boxes. The DNN learns and later identifies and tracks a target in simulation. This target is called the `hero` throughout this documentation. 
 
 In a Fully Connected Layer each perceptron is connected to every perceptron in the previous layer, and each connection has it's own weight. This is a general purpose connection pattern making no assumptions about features in the data. 
 
