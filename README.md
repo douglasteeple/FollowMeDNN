@@ -318,7 +318,9 @@ The neural network obtained an accuracy greater than or equal to 40% (0.40) usin
 
 #### The required final score required by the rubric was met.
 
-The model fundamentally could be trained to recognize and follow other shapes such as cats or dogs, but that would require a large set of training and validation images. We can see that the model does well with the hero up close and with no hero, but has trouble (many false negatives) with the target in the distance. This observation would indicate that more training and validation data with the hero far in the background would help the overal score.
+The model fundamentally could be trained to recognize and follow other shapes such as cats or dogs, but that would require a large set of training and validation images. 
+
+We can see that the model does well with the hero up close and with no hero, but has trouble (many false negatives) with the target in the distance. This observation would indicate that more training and validation data with the hero far in the background would help the overal score.
 
 ## Future Enhancements And Comments
 
