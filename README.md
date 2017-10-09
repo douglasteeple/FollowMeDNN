@@ -11,11 +11,11 @@ The name `convolutional` network comes from the fact that the local connection p
 
 This project consists of the following:
 
-* Implemented the Fully Convolutional Network (FCN) deep neural network.
-* Gathered simulation data, training and validation, with and without hero, using the Unity simulator.
-* Trained the model on an Amazon AWS instance.
-* Checked the score for accuracy.
-* Ran the model in the simulator to follow the hero.
+* Implementing the Fully Convolutional Network (FCN) deep neural network.
+* Gathering simulation data, training and validation, with and without hero, using the Unity simulator.
+* Training the model on an Amazon AWS instance.
+* Checking the score for accuracy.
+* Running the model in the simulator to follow the hero.
 
 
 <table align="center"> 
